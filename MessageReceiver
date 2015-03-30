@@ -1,0 +1,35 @@
+package jrJava.networkChat;
+
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class MessageReceiver implements Runnable{
+
+	private InputStream is;
+
+	public MessageReceiver(InputStream _is){
+		is = _is;
+	}
+
+
+	public void run() {
+		try{
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader (isr);
+			while(true){
+
+				String line = br.readLine();
+				System.out.println(line);
+
+			}
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+}
+
